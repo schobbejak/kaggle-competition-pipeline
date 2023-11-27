@@ -1,2 +1,5 @@
 # Ignore data files
 data/
+
+# Ignore log files
+logs/
