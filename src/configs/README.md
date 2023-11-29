@@ -1,0 +1,1 @@
+# This folder contains files for processing and storing configuration files
