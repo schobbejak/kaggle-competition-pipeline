@@ -1,0 +1,11 @@
+data_processing:
+  data_path: "data/raw"
+  data_store: "data/processed"
+  pp_pipeline_steps:
+  fe_pipeline_steps:
+  pt_pipeline_steps:
+model:
+  architecture: 
+    type:  
+  post_processing:
+    post_processing_steps: []
