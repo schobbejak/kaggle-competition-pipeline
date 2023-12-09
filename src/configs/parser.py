@@ -46,6 +46,8 @@ class JSONParser(Parser):
         Parse the JSON config file and return a dictionary
         :return: The dictionary containing the config data
         """
+        logger.debug(f"Parsing JSON file: {self.filepath}")
         with open(self.filepath, 'r') as file:
             data = json.load(file)
+        logger.debug(f"Parsed JSON file: {self.filepath}, data: {data}")
         return data
