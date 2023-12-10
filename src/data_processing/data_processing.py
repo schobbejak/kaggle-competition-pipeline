@@ -25,15 +25,18 @@ def process_data(data_path: str = "", data_store: str = None, pp_pipeline_steps:
 
     # Get the pipeline
     steps = []
-    pp_pipeline = get_pp_pipeline(pp_pipeline_steps)
+    pp_pipeline = get_pp_pipeline(
+        pp_pipeline_steps=pp_pipeline_steps, data_store=data_store)
     if pp_pipeline:
         steps.append(("preprocessing", pp_pipeline))
 
-    fe_pipeline = get_fe_pipeline(fe_pipeline_steps)
+    fe_pipeline = get_fe_pipeline(
+        fe_pipeline_steps=fe_pipeline_steps, data_store=data_store)
     if fe_pipeline:
         steps.append(("feature_engineering", fe_pipeline))
 
-    pt_pipeline = get_pt_pipeline(pt_pipeline_steps)
+    pt_pipeline = get_pt_pipeline(
+        pt_pipeline_steps=pt_pipeline_steps, data_store=data_store)
     if pt_pipeline:
         steps.append(("pretraining", pt_pipeline))
 
