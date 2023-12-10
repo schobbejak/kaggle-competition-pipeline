@@ -35,6 +35,5 @@ def get_model(model_architecture: dict, post_processing: dict) -> Optional[Pipel
     if not steps:
         return
 
-    # Get the model pipeline
-    model_pipeline = Pipeline(steps)
-    return model_pipeline
+    # Return the model pipeline
+    return Pipeline(steps)

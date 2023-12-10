@@ -1,6 +1,5 @@
 # This file combines all steps and returns a pipeline that can be used to
 # process the data.
-
 from typing import Optional
 import pandas as pd
 
