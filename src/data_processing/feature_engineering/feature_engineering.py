@@ -1,9 +1,10 @@
+from typing import Optional
 from sklearn.pipeline import Pipeline
 
 from src.logging_utils import logger
 
 
-def get_fe_pipeline(fe_pipeline_steps: list = []) -> Pipeline:
+def get_fe_pipeline(fe_pipeline_steps: list = []) -> Optional[Pipeline]:
     """
     Get the feature engineering pipeline.
     :fe_pipeline_steps: The feature engineering pipeline steps.
@@ -14,7 +15,7 @@ def get_fe_pipeline(fe_pipeline_steps: list = []) -> Pipeline:
 
     # Feature engineering steps is none
     if fe_pipeline_steps is None:
-        return Pipeline(steps)
+        return
 
     # Add the steps to the pipeline
     for step in fe_pipeline_steps:
@@ -26,17 +27,9 @@ def get_fe_pipeline(fe_pipeline_steps: list = []) -> Pipeline:
 
 def match_step(step: str) -> Pipeline:
     """
-    Match the step to the corresponding function.
-
-    Parameters
-    ----------
-    step : str
-        The step to match.
-
-    Returns
-    -------
-    function : function
-        The function corresponding to the step.
+    Match the step to the pipeline.
+    :param step: The step to match.
+    :return: The pipeline.
     """
 
     step_pipeline = None

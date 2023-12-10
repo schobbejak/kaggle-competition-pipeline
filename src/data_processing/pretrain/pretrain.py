@@ -1,9 +1,10 @@
+from typing import Optional
 from sklearn.pipeline import Pipeline
 
 from src.logging_utils import logger
 
 
-def get_pt_pipeline(pt_pipeline_steps: list = []) -> Pipeline:
+def get_pt_pipeline(pt_pipeline_steps: list = []) -> Optional[Pipeline]:
     """
     Get the pretraining pipeline.
     :param pt_pipeline_steps: The steps to include in the pretraining pipeline.
@@ -14,7 +15,7 @@ def get_pt_pipeline(pt_pipeline_steps: list = []) -> Pipeline:
 
     # Pretraining steps is none
     if pt_pipeline_steps is None:
-        return Pipeline(steps)
+        return
 
     # Add the steps to the pipeline
     for step in pt_pipeline_steps:

@@ -35,21 +35,25 @@ def retrieve_full_pipeline(data_configuration: dict, model_configuration: dict) 
     ), "post_processing is not in the model configuration"
 
     # Get the data pipeline
-    logger.debug(f"Retrieving data pipeline, data store: {data_configuration['data_store']}, data path: {data_configuration['data_path']}")
+    logger.debug(
+        f"Retrieving data pipeline, data store: {data_configuration['data_store']}, data path: {data_configuration['data_path']}")
     data_pipeline, data = process_data(data_store=data_configuration["data_store"],
                                        data_path=data_configuration["data_path"],
                                        pp_pipeline_steps=data_configuration["pp_pipeline_steps"],
                                        fe_pipeline_steps=data_configuration["fe_pipeline_steps"],
                                        pt_pipeline_steps=data_configuration["pt_pipeline_steps"])
+    if not data_pipeline:
+        logger.error("Data pipeline is None")
     assert data is not None, "Data is None"
-    assert data_pipeline is not None, "Data pipeline is None"
     logger.debug("Retrieved data pipeline")
 
     # Get the model pipeline
-    logger.debug(f"Retrieving model pipeline, architecture: {model_configuration['architecture']}, post-processing: {model_configuration['post_processing']}")
+    logger.debug(
+        f"Retrieving model pipeline, architecture: {model_configuration['architecture']}, post-processing: {model_configuration['post_processing']}")
     model_pipeline = get_model(
         model_configuration["architecture"], model_configuration["post_processing"])
-    assert model_pipeline is not None, "Model pipeline is None"
+    if not model_pipeline:
+        logger.error("Model pipeline is None")
     logger.debug("Retrieved model pipeline")
 
     full_pipeline = Pipeline([

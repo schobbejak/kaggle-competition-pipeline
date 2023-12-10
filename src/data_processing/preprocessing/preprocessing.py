@@ -1,9 +1,10 @@
+from typing import Optional
 from sklearn.pipeline import Pipeline
 
-from src.logging_utils import logger
+from src.logging_utils.logger import logger
 
 
-def get_pp_pipeline(pp_pipeline_steps: list = []) -> Pipeline:
+def get_pp_pipeline(pp_pipeline_steps: list = []) -> Optional[Pipeline]:
     """
     Get the preprocessing pipeline.
     :param pp_pipeline_steps: The preprocessing steps to include in the pipeline.
@@ -13,8 +14,8 @@ def get_pp_pipeline(pp_pipeline_steps: list = []) -> Pipeline:
     steps = []
 
     # Preprocessing steps is none
-    if pp_pipeline_steps is None:
-        return Pipeline(steps)
+    if not pp_pipeline_steps:
+        return
 
     # Add the steps to the pipeline
     for step in pp_pipeline_steps:
