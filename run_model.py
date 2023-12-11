@@ -47,6 +47,6 @@ def run_model(path: str) -> None:
 if __name__ == "__main__":
 
     import coloredlogs
-    coloredlogs.install(level="DEBUG")
+    coloredlogs.install()
 
     run_model(path="configs/model.yaml")

@@ -11,7 +11,7 @@ logger.setLevel(logging.DEBUG)
 file_handler = logging.FileHandler("tracking/logs/logs.txt")
 
 # Create a formatter
-formatter = logging.Formatter("%(asctime)s:%(levelname)s:%(name)s:%(message)s")
+formatter = logging.Formatter("%(asctime)s | %(levelname)s | %(name)s | %(filename)s:%(lineno)d | %(message)s")
 
 # Add the formatter to the file handler
 file_handler.setFormatter(formatter)
